@@ -10,14 +10,44 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:adapt.helloWorld"
+        "onCommand:adapt.helloWorld",
+        "onCommand:adapt.selectPathSegment",
+        "onCommand:adapt.selectBetweenBrackets",
+        "onCommand:adapt.selectBetweenQuotes",
+        "onCommand:adapt.tripleLineSplit",
+        "onCommand:adapt.duplicate",
+        "onCommand:adapt.delToLineBegin"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
 				"command": "adapt.helloWorld",
-				"title": "Hello World"
+				"title": "Adapt: Hello World"
+			},
+			{
+				"command": "adapt.selectPathSegment",
+				"title": "Adapt: Select path segment"
+			},
+			{
+				"command": "adapt.selectBetweenBrackets",
+				"title": "Adapt: Select between brackets"
+			},
+			{
+				"command": "adapt.selectBetweenQuotes",
+				"title": "Adapt: Select between quotes"
+			},
+			{
+				"command": "adapt.tripleLineSplit",
+				"title": "Adapt: Triple line split"
+			},
+			{
+				"command": "adapt.duplicate",
+				"title": "Adapt: Duplicate"
+			},
+			{
+				"command": "adapt.delToLineBegin",
+				"title": "Adapt: Delite to line begin"
 			}
 		]
 	},

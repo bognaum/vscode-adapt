@@ -19,7 +19,52 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from adapt!');
 	});
 
-	context.subscriptions.push(disposable);
+	const commands = [
+		vscode.commands.registerTextEditorCommand(
+			"adapt.selectPathSegment", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("selectPathSegment");
+				vscode.window.showInformationMessage('selectPathSegment');
+			}
+		),
+		vscode.commands.registerTextEditorCommand(
+			"adapt.selectBetweenBrackets", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("selectBetweenBrackets");
+				vscode.window.showInformationMessage('selectBetweenBrackets');
+			}
+		),
+		vscode.commands.registerTextEditorCommand(
+			"adapt.selectBetweenQuotes", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("selectBetweenQuotes");
+				vscode.window.showInformationMessage('selectBetweenQuotes');
+			}
+		),
+		vscode.commands.registerTextEditorCommand(
+			"adapt.tripleLineSplit", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("tripleLineSplit");
+				vscode.window.showInformationMessage('tripleLineSplit');
+			}
+		),
+		vscode.commands.registerTextEditorCommand(
+			"adapt.duplicate", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("duplicate");
+				vscode.window.showInformationMessage('duplicate');
+			}
+		),
+		vscode.commands.registerTextEditorCommand(
+			"adapt.delToLineBegin", 
+			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+				console.log("delToLineBegin");
+				vscode.window.showInformationMessage('delToLineBegin');
+			}
+		),
+	];
+
+	context.subscriptions.push(disposable, ...commands);
 }
 
 // this method is called when your extension is deactivated
