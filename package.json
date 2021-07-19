@@ -20,6 +20,50 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
+		"keybindings": [
+			{
+				"mac": "alt+cmd+shift+m",
+				"win": "alt+ctrl+shift+m",
+				"key": "alt+ctrl+shift+m",
+				"command": "adapt.selectPathSegment",
+				"when": "editorTextFocus"
+			},
+			{
+				"mac": "cmd+shift+m",
+				"win": "ctrl+shift+m",
+				"key": "ctrl+shift+m",
+				"command": "adapt.selectBetweenBrackets",
+				"when": "editorTextFocus"
+			},
+			{
+				"mac": "alt+shift+m",
+				"win": "alt+shift+m",
+				"key": "alt+shift+m",
+				"command": "adapt.selectBetweenQuotes",
+				"when": "editorTextFocus"
+			},
+			{
+				"mac": "shift+enter",
+				"win": "shift+enter",
+				"key": "shift+enter",
+				"command": "adapt.tripleLineSplit",
+				"when": "editorTextFocus"
+			},
+			{
+				"mac": "cmd+shift+d",
+				"win": "ctrl+shift+d",
+				"key": "ctrl+shift+d",
+				"command": "adapt.duplicate",
+				"when": "editorTextFocus"
+			},
+			{
+				"mac": "cmd+chift+backspace",
+				"win": "ctrl+chift+backspace",
+				"key": "ctrl+chift+backspace",
+				"command": "adapt.delToLineBegin",
+				"when": "editorTextFocus"
+			}
+		],
 		"commands": [
 			{
 				"command": "adapt.helloWorld",
