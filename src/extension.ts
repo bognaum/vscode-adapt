@@ -49,13 +49,6 @@ export function activate(context: vscode.ExtensionContext) {
 			}
 		),
 		vscode.commands.registerTextEditorCommand(
-			"adapt.duplicate", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
-				console.log("duplicate");
-				vscode.window.showInformationMessage('duplicate');
-			}
-		),
-		vscode.commands.registerTextEditorCommand(
 			"adapt.delToLineBegin", 
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
 				console.log("delToLineBegin");

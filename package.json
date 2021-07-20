@@ -15,7 +15,6 @@
         "onCommand:adapt.selectBetweenBrackets",
         "onCommand:adapt.selectBetweenQuotes",
         "onCommand:adapt.tripleLineSplit",
-        "onCommand:adapt.duplicate",
         "onCommand:adapt.delToLineBegin"
 	],
 	"main": "./out/extension.js",
@@ -47,13 +46,6 @@
 				"win": "shift+enter",
 				"key": "shift+enter",
 				"command": "adapt.tripleLineSplit",
-				"when": "editorTextFocus"
-			},
-			{
-				"mac": "cmd+shift+d",
-				"win": "ctrl+shift+d",
-				"key": "ctrl+shift+d",
-				"command": "adapt.duplicate",
 				"when": "editorTextFocus"
 			},
 			{
