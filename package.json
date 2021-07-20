@@ -49,9 +49,9 @@
 				"when": "editorTextFocus"
 			},
 			{
-				"mac": "cmd+chift+backspace",
-				"win": "ctrl+chift+backspace",
-				"key": "ctrl+chift+backspace",
+				"mac": "cmd+shift+backspace",
+				"win": "ctrl+shift+backspace",
+				"key": "ctrl+shift+backspace",
 				"command": "adapt.delToLineBegin",
 				"when": "editorTextFocus"
 			}
