@@ -19,6 +19,8 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInformationMessage('Hello World from adapt!');
 	});
 
+	const vsc = vscode;
+
 	const commands = [
 		vscode.commands.registerTextEditorCommand(
 			"adapt.selectPathSegment", 
@@ -57,8 +59,50 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerTextEditorCommand(
 			"adapt.selectBetweenQuotes", 
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
-				console.log("selectBetweenQuotes");
-				vscode.window.showInformationMessage('selectBetweenQuotes');
+				const 
+					doc = tEditor.document,
+					text = doc.getText(),
+					quoteds = [],
+					sels    = [];
+				let 
+					a = 0, 
+					b = 0, 
+					char = "", 
+					quote = "", 
+					i = -1;
+				while (char = text[++ i]) {
+					if (["'", '"', "`"].includes(char)) {
+						if (! quote) 
+							a = i + 1, quote = char;
+						else if (char === quote) {
+							b = i;
+							quoteds.push(new vsc.Range(doc.positionAt(a), doc.positionAt(b)));
+							quote = "";
+						}
+					} else if (char === "\\") {
+						i ++;
+					}
+						
+				}
+				for (let sel of tEditor.selections) {
+					const 
+						{start, end} = sel,
+						range = new vscode.Range(start, end);
+					for (let r of quoteds) {
+						const 
+							{start, end} = r;
+						if (r.isEqual(range)) {
+							sels.push(new vscode.Selection(
+								doc.positionAt(doc.offsetAt(start) - 1), 
+								doc.positionAt(doc.offsetAt(end) + 1) 
+							));
+						} else if (r.contains(range)) {
+							sels.push(new vscode.Selection(start, end));
+						}
+					}
+					sels.push(new vscode.Selection(range.start, range.end));
+				}
+				tEditor.selections = sels;
 			}
 		),
 		vscode.commands.registerTextEditorCommand(
