@@ -39,8 +39,19 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerTextEditorCommand(
 			"adapt.selectBetweenBrackets", 
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
-				console.log("selectBetweenBrackets");
-				vscode.window.showInformationMessage('selectBetweenBrackets');
+				vsc.commands.executeCommand("editor.action.selectToBracket")
+				.then(() => {
+					const newSels = [];
+					for (let sel of tEditor.selections) {
+						const 
+							{line :aL, character :aCh} = sel.start,
+							a = new vsc.Position(aL, aCh + 1),
+							{line :bL, character :bCh} = sel.end,
+							b = new vsc.Position(bL, bCh - 1);
+						newSels.push(new vsc.Selection(a,b));
+					}
+					tEditor.selections = newSels;
+				});
 			}
 		),
 		vscode.commands.registerTextEditorCommand(
