@@ -115,8 +115,14 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.commands.registerTextEditorCommand(
 			"adapt.delToLineBegin", 
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
-				console.log("delToLineBegin");
-				vscode.window.showInformationMessage('delToLineBegin');
+				for (let sel of tEditor.selections) {
+					const {start, end} = sel;
+					if (start.character === 0)
+						vsc.commands.executeCommand("deleteLeft");
+					else
+						edit.delete(new vsc.Range(start.with(start.line, 0), end));
+				}
+				
 			}
 		),
 	];
