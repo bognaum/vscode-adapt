@@ -25,6 +25,15 @@ export function activate(context: vscode.ExtensionContext) {
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
 				console.log("selectPathSegment");
 				vscode.window.showInformationMessage('selectPathSegment');
+				const 
+					doc = tEditor.document,
+					newSels = [];
+				for (let sel of tEditor.selections) {
+					const r = doc.getWordRangeAtPosition(sel.anchor, /[^"'`/\\]+/);
+					if (r)
+						newSels.push(new vsc.Selection(r.start, r.end));
+				}
+				tEditor.selections = newSels;
 			}
 		),
 		vscode.commands.registerTextEditorCommand(
