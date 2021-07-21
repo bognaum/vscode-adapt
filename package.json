@@ -10,7 +10,6 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:adapt.helloWorld",
         "onCommand:adapt.selectPathSegment",
         "onCommand:adapt.selectBetweenBrackets",
         "onCommand:adapt.selectBetweenQuotes",
@@ -57,10 +56,6 @@
 			}
 		],
 		"commands": [
-			{
-				"command": "adapt.helloWorld",
-				"title": "Adapt: Hello World"
-			},
 			{
 				"command": "adapt.selectPathSegment",
 				"title": "Adapt: Select path segment"
