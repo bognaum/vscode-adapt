@@ -1,10 +1,10 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+// The module 'vsc' contains the VS Code extensibility API
+// Import the module and reference it with the alias vsc in your code below
+import * as vsc from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vsc.ExtensionContext) {
 	
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
@@ -13,20 +13,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with registerCommand
 	// The commandId parameter must match the command field in package.json
-	let disposable = vscode.commands.registerCommand('adapt.helloWorld', () => {
+	let disposable = vsc.commands.registerCommand('adapt.helloWorld', () => {
 		// The code you place here will be executed every time your command is executed
 		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from adapt!');
+		vsc.window.showInformationMessage('Hello World from adapt!');
 	});
 
-	const vsc = vscode;
-
 	const commands = [
-		vscode.commands.registerTextEditorCommand(
+		vsc.commands.registerTextEditorCommand(
 			"adapt.selectPathSegment", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				console.log("selectPathSegment");
-				vscode.window.showInformationMessage('selectPathSegment');
+				vsc.window.showInformationMessage('selectPathSegment');
 				const 
 					doc = tEditor.document,
 					newSels = [];
@@ -38,9 +36,9 @@ export function activate(context: vscode.ExtensionContext) {
 				tEditor.selections = newSels;
 			}
 		),
-		vscode.commands.registerTextEditorCommand(
+		vsc.commands.registerTextEditorCommand(
 			"adapt.selectBetweenBrackets", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				vsc.commands.executeCommand("editor.action.selectToBracket")
 				.then(() => {
 					const newSels = [];
@@ -56,9 +54,9 @@ export function activate(context: vscode.ExtensionContext) {
 				});
 			}
 		),
-		vscode.commands.registerTextEditorCommand(
+		vsc.commands.registerTextEditorCommand(
 			"adapt.selectBetweenQuotes", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				const 
 					doc = tEditor.document,
 					text = doc.getText(),
@@ -87,40 +85,36 @@ export function activate(context: vscode.ExtensionContext) {
 				for (let sel of tEditor.selections) {
 					const 
 						{start, end} = sel,
-						range = new vscode.Range(start, end);
+						range = new vsc.Range(start, end);
 					for (let r of quoteds) {
 						const 
 							{start, end} = r;
 						if (r.isEqual(range)) {
-							sels.push(new vscode.Selection(
+							sels.push(new vsc.Selection(
 								doc.positionAt(doc.offsetAt(start) - 1), 
 								doc.positionAt(doc.offsetAt(end) + 1) 
 							));
 						} else if (r.contains(range)) {
-							sels.push(new vscode.Selection(start, end));
+							sels.push(new vsc.Selection(start, end));
 						}
 					}
-					sels.push(new vscode.Selection(range.start, range.end));
+					sels.push(new vsc.Selection(range.start, range.end));
 				}
 				tEditor.selections = sels;
 			}
 		),
-		vscode.commands.registerTextEditorCommand(
+		vsc.commands.registerTextEditorCommand(
 			"adapt.tripleLineSplit", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
-				console.log("tripleLineSplit");
-				vscode.window.showInformationMessage('tripleLineSplit');
-
+			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				const 
 					doc  = tEditor.document,
 					opts = tEditor.options,
-					selects: vscode.Selection[] = [],
+					selects: vsc.Selection[] = [],
 					offsets: [number, number][] = [];
 				const oneTab  = typeof opts.tabSize === "number" ? 
 					" ".repeat(opts.tabSize) : "\t";
 
 				tEditor.edit((edit) => {
-					
 					for (let sel of tEditor.selections) {
 						const 
 							line    = doc.lineAt(sel.active),
@@ -154,9 +148,9 @@ export function activate(context: vscode.ExtensionContext) {
 				});
 			}
 		),
-		vscode.commands.registerTextEditorCommand(
+		vsc.commands.registerTextEditorCommand(
 			"adapt.delToLineBegin", 
-			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
+			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				for (let sel of tEditor.selections) {
 					const {start, end} = sel;
 					if (start.character === 0)
