@@ -110,6 +110,36 @@ export function activate(context: vscode.ExtensionContext) {
 			function (tEditor: vscode.TextEditor, edit: vscode.TextEditorEdit, args: any[]) {
 				console.log("tripleLineSplit");
 				vscode.window.showInformationMessage('tripleLineSplit');
+				const 
+					doc  = tEditor.document,
+					opts = tEditor.options,
+					selects = [];
+				const oneTab  = typeof opts.tabSize === "number" ? 
+					" ".repeat(opts.tabSize) : "\t";
+				console.log(`tEditor.options`, tEditor.options);
+				for (let sel of tEditor.selections) {
+					const 
+						line    = doc.lineAt(sel.active),
+						lRange  = line.range,
+						text    = line.text,
+						indentM = text.match(/^\s*/),
+						indent  = indentM ? indentM[0] : "",
+						indLen  = indent.length,
+						beforeSel = "\n"+indent + oneTab,
+						afterSel  = "\n"+indent;
+
+					edit.insert(sel.start, beforeSel);
+					edit.insert(sel.end,   afterSel);
+
+					// edit.replace(sel, beforeSel + doc.getText(sel) + afterSel);
+
+					console.log(`sel.start.line`, sel.start.line);
+					console.log(`sel.start.character`, sel.start.character);
+					console.log(`sel.end.line`, sel.end.line);
+					console.log(`sel.end.character`, sel.end.character);
+					// vsc.commands.executeCommand("");
+				}
+				// tEditor.selections = selects;
 			}
 		),
 		vscode.commands.registerTextEditorCommand(
