@@ -17,24 +17,6 @@ export function activate(context: vsc.ExtensionContext) {
 			}
 		),
 		vsc.commands.registerTextEditorCommand(
-			"adapt.selectBetweenBrackets", 
-			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
-				vsc.commands.executeCommand("editor.action.selectToBracket")
-				.then(() => {
-					const newSels = [];
-					for (let sel of tEditor.selections) {
-						const 
-							{line :aL, character :aCh} = sel.start,
-							a = new vsc.Position(aL, aCh + 1),
-							{line :bL, character :bCh} = sel.end,
-							b = new vsc.Position(bL, bCh - 1);
-						newSels.push(new vsc.Selection(a,b));
-					}
-					tEditor.selections = newSels;
-				});
-			}
-		),
-		vsc.commands.registerTextEditorCommand(
 			"adapt.selectBetweenQuotes", 
 			function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args: any[]) {
 				const 

@@ -11,7 +11,6 @@
 	],
 	"activationEvents": [
         "onCommand:adapt.selectPathSegment",
-        "onCommand:adapt.selectBetweenBrackets",
         "onCommand:adapt.selectBetweenQuotes",
         "onCommand:adapt.tripleLineSplit",
         "onCommand:adapt.delToLineBegin"
@@ -24,13 +23,6 @@
 				"win": "alt+ctrl+shift+m",
 				"key": "alt+ctrl+shift+m",
 				"command": "adapt.selectPathSegment",
-				"when": "editorTextFocus"
-			},
-			{
-				"mac": "cmd+shift+m",
-				"win": "ctrl+shift+m",
-				"key": "ctrl+shift+m",
-				"command": "adapt.selectBetweenBrackets",
 				"when": "editorTextFocus"
 			},
 			{
