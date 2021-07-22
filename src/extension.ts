@@ -73,7 +73,7 @@ export function activate(context: vsc.ExtensionContext) {
 					opts = tEditor.options,
 					selects: vsc.Selection[] = [],
 					offsets: [number, number][] = [];
-				const oneTab  = typeof opts.tabSize === "number" ? 
+				const oneTab  = opts.insertSpaces && typeof opts.tabSize === "number" ? 
 					" ".repeat(opts.tabSize) : "\t";
 
 				tEditor.edit((edit) => {
