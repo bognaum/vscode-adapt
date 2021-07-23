@@ -53,20 +53,12 @@
 				"title": "Adapt: Select path segment"
 			},
 			{
-				"command": "adapt.selectBetweenBrackets",
-				"title": "Adapt: Select between brackets"
-			},
-			{
 				"command": "adapt.selectBetweenQuotes",
 				"title": "Adapt: Select between quotes"
 			},
 			{
 				"command": "adapt.tripleLineSplit",
 				"title": "Adapt: Triple line split"
-			},
-			{
-				"command": "adapt.duplicate",
-				"title": "Adapt: Duplicate"
 			},
 			{
 				"command": "adapt.delToLineBegin",
