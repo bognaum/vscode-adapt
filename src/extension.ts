@@ -71,6 +71,7 @@ export function activate(context: vsc.ExtensionContext) {
 				const 
 					doc  = tEditor.document,
 					opts = tEditor.options,
+					EOL  = [0, "\n", "\r\n"][doc.eol],
 					selects: vsc.Selection[] = [],
 					offsets: [number, number][] = [];
 				const oneTab  = opts.insertSpaces && typeof opts.tabSize === "number" ? 
@@ -85,9 +86,9 @@ export function activate(context: vsc.ExtensionContext) {
 							indentM = text.match(/^\s*/),
 							indent  = indentM ? indentM[0] : "",
 							indLen  = indent.length,
-							beforeSel = "\n"+indent + oneTab,
+							beforeSel = EOL+indent + oneTab,
 							selected  = doc.getText(sel),
-							afterSel  = "\n"+indent;
+							afterSel  = EOL+indent;
 
 						// edit.insert(sel.start, beforeSel);
 						// edit.insert(sel.end,   afterSel);
