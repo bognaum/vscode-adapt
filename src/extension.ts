@@ -82,31 +82,31 @@ export function activate(context: vsc.ExtensionContext) {
 		),
 		vsc.commands.registerCommand(
 			"adapt.openSublimeMerge",
-			function (arg1: any, arg2: any) {
-				openFolderWith((path: string) => `smerge "${path}"`, arg1);
+			function (arg1: {fsPath: string}, arg2: any) {
+				openFolderWith(arg1, (path: string) => `smerge "${path}"`);
 			}
 		),
 		vsc.commands.registerCommand(
 			"adapt.openSublimeText",
-			function (arg1: any, arg2: any) {
-				openFolderWith((path: string) => `subl "${path}"`, arg1);
+			function (arg1: {fsPath: string}, arg2: any) {
+				openFolderWith(arg1, (path: string) => `subl "${path}"`);
 			}
 		),
 		vsc.commands.registerCommand(
 			"adapt.openCMD",
-			function (arg1: any, arg2: any) {
-				openFolderWith((path: string) => `start cmd /s /k pushd "${path}"`, arg1);
+			function (arg1: {fsPath: string}, arg2: any) {
+				openFolderWith(arg1, (path: string) => `start cmd /s /k pushd "${path}"`);
 			}
 		),
 		vsc.commands.registerCommand(
 			"adapt.openPowerShell",
-			function (arg1: any, arg2: any) {
+			function (arg1: {fsPath: string}, arg2: any) {
 				openFolderWith(
+					arg1,
 					(path: string) => {
 						return `start powershell.exe -noexit ` + 
 							`-command Set-Location -literalPath "${path}"`;
 					}, 
-					arg1
 				);
 			}
 		),
