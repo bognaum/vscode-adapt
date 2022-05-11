@@ -13,7 +13,21 @@
         "onCommand:adapt.selectPathSegment",
         "onCommand:adapt.selectBetweenQuotes",
         "onCommand:adapt.tripleLineSplit",
-        "onCommand:adapt.delToLineBegin"
+        "onCommand:adapt.delToLineBegin",
+
+		"onCommand:adapt.alignCursors",
+		"onCommand:adapt.pasteCursorNums",
+		"onCommand:adapt.pasteCursorNums-x",
+		"onCommand:adapt.pasteCursorNums-xx",
+		"onCommand:adapt.pasteCursorNums-xxx",
+		"onCommand:adapt.pasteCursorNums-xxxx",
+		"onCommand:adapt.pasteCursorNums-xxxxx",
+		"onCommand:adapt.changeToEntities",
+		"onCommand:adapt.pasteLineNumber",
+		"onCommand:adapt.openSublimeMerge",
+		"onCommand:adapt.openSublimeText",
+		"onCommand:adapt.openCMD",
+		"onCommand:adapt.openPowerShell"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -63,6 +77,146 @@
 			{
 				"command": "adapt.delToLineBegin",
 				"title": "Adapt: Delite to line begin"
+			},
+
+
+			{
+				"command": "adapt.alignCursors",
+				"title": "Adapt: Align cursors"
+			},
+			{
+				"command": "adapt.pasteCursorNums",
+				"title": "Adapt: Paset Numbers of Cursors"
+			},
+			{
+				"command": "adapt.pasteCursorNums-x",
+				"title": "Adapt: Paset Numbers of Cursors X"
+			},
+			{
+				"command": "adapt.pasteCursorNums-xx",
+				"title": "Adapt: Paset Numbers of Cursors XX"
+			},
+			{
+				"command": "adapt.pasteCursorNums-xxx",
+				"title": "Adapt: Paset Numbers of Cursors XXX"
+			},
+			{
+				"command": "adapt.pasteCursorNums-xxxx",
+				"title": "Adapt: Paset Numbers of Cursors XXXX"
+			},
+			{
+				"command": "adapt.pasteCursorNums-xxxxx",
+				"title": "Adapt: Paset Numbers of Cursors XXXXX"
+			},
+			{
+				"command": "adapt.changeToEntities",
+				"title": "Adapt: Change <>& to &...;"
+			},
+			{
+				"command": "adapt.pasteLineNumber",
+				"title": "Adapt: Paste Line Number"
+			},
+			{
+				"command": "adapt.openSublimeMerge",
+				"title": "Adapt: Open Sublime Merge"
+			},
+			{
+				"command": "adapt.openSublimeText",
+				"title": "Adapt: Open Sublime Text"
+			},
+			{
+				"command": "adapt.openCMD",
+				"title": "Adapt: Open CMD"
+			},
+			{
+				"command": "adapt.openPowerShell",
+				"title": "Adapt: Open PowerShell"
+			}
+		],
+		"menus": {
+			"editor/title/context": [
+				{
+					"command": "adapt.alignCursors"
+				},
+				{
+					"command": "adapt.changeToEntities"
+				},
+				{
+					"submenu": "pasteCursorNumbers"
+				},
+				{
+					"command": "adapt.pasteLineNumber"
+				}
+			],
+			"editor/title": [
+				{
+					"command": "adapt.alignCursors"
+				},
+				{
+					"command": "adapt.changeToEntities"
+				},
+				{
+					"submenu": "pasteCursorNumbers"
+				},
+				{
+					"command": "adapt.pasteLineNumber"
+				},
+				{
+					"command": "adapt.openSublimeMerge",
+					"group": "1"
+				},
+				{
+					"command": "adapt.openSublimeText",
+					"group": "1"
+				},
+				{
+					"command": "adapt.openCMD",
+					"group": "1"
+				},
+				{
+					"command": "adapt.openPowerShell",
+					"group": "1"
+				}
+			],
+			"explorer/context": [
+				{
+					"command": "adapt.openSublimeMerge"
+				},
+				{
+					"command": "adapt.openSublimeText"
+				},
+				{
+					"command": "adapt.openCMD"
+				},
+				{
+					"command": "adapt.openPowerShell"
+				}
+			],
+			"pasteCursorNumbers": [
+				{
+					"command": "adapt.pasteCursorNums"
+				},
+				{
+					"command": "adapt.pasteCursorNums-x"
+				},
+				{
+					"command": "adapt.pasteCursorNums-xx"
+				},
+				{
+					"command": "adapt.pasteCursorNums-xxx"
+				},
+				{
+					"command": "adapt.pasteCursorNums-xxxx"
+				},
+				{
+					"command": "adapt.pasteCursorNums-xxxxx"
+				}
+			]
+		},
+		"submenus": [
+			{
+				"id": "pasteCursorNumbers",
+				"label": "Paste Cursor Numbers"
 			}
 		]
 	},
