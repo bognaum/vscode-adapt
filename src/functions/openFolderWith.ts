@@ -1,15 +1,15 @@
 import * as vsc from 'vscode';
 const 
-	path          = require("path"),
-	fs            = require("fs"),
-	child_process = require("child_process");
+	PATH          = require("path"),
+	FS            = require("fs"),
+	CHILD_PROCESS = require("child_process");
 
 export default function openFolderWith(
-	fsPath: null|string,
+	path: null|string,
 	callb: (path: string) => string, 
 ) {
-	if (fsPath) {
-		execCommand(fsPath, callb);
+	if (path) {
+		execCommand(path, callb);
 	} else {
 		vsc.window.showInformationMessage("Please select a folder.");
 		vsc.window.showOpenDialog({canSelectFolders: true})
@@ -23,11 +23,11 @@ export default function openFolderWith(
 	}
 }
 
-function execCommand(fsPath: string, callb: (path: string) => string,) {
+function execCommand(path: string, callb: (path: string) => string,) {
 	const 
-		isFile     = fs.lstatSync(fsPath).isFile(),
-		folderPath = isFile? path.dirname(fsPath) : fsPath,
+		isFile     = FS.lstatSync(path).isFile(),
+		folderPath = isFile? PATH.dirname(path) : path,
 		cliCommand = callb(folderPath);
 	vsc.window.showInformationMessage(cliCommand);
-	child_process.exec(cliCommand);
+	CHILD_PROCESS.exec(cliCommand);
 }
