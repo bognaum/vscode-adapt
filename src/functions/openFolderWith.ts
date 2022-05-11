@@ -5,11 +5,11 @@ const
 	child_process = require("child_process");
 
 export default function openFolderWith(
-	api: {fsPath: string},
+	fsPath: null|string,
 	callb: (path: string) => string, 
 ) {
-	if (api?.fsPath) {
-		execCommand(api.fsPath, callb);
+	if (fsPath) {
+		execCommand(fsPath, callb);
 	} else {
 		vsc.window.showInformationMessage("Please select a folder.");
 		vsc.window.showOpenDialog({canSelectFolders: true})
