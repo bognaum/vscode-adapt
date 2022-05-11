@@ -14,11 +14,13 @@ export default function openFolderWith(
 		vsc.window.showInformationMessage("Please select a folder.");
 		vsc.window.showOpenDialog({canSelectFolders: true})
 			.then((arr) => {
-				if (arr)
-					for (let v of arr) 
+				if (arr) {
+					for (let v of arr) {
 						execCommand(v.fsPath, callb);
-				else
+					}
+				} else {
 					vsc.window.showInformationMessage("Aborted.");
+				}
 			});
 	}
 }
