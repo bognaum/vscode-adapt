@@ -156,20 +156,6 @@
 			}
 		],
 		"menus": {
-			"editor/title/context": [
-				{
-					"command": "adapt.alignCursors"
-				},
-				{
-					"command": "adapt.changeToEntities"
-				},
-				{
-					"submenu": "pasteCursorNumbers"
-				},
-				{
-					"command": "adapt.pasteLineNumber"
-				}
-			],
 			"editor/title": [
 				{
 					"command": "adapt.alignCursors"
