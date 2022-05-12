@@ -88,10 +88,28 @@ export function activate(context: vsc.ExtensionContext) {
 			}
 		),
 		vsc.commands.registerCommand(
+			"adapt.openProjectInSublimeMerge",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const 
+					wsfs = vsc.workspace.workspaceFolders,
+					pathes = wsfs?.map((v) => v.uri.fsPath) || null;
+				openFolderWith(pathes, (path: string) => `smerge "${path}"`);
+			}
+		),
+		vsc.commands.registerCommand(
 			"adapt.openSublimeText",
 			function (arg1: {fsPath: string}, arg2: any) {
 				const path = arg1.fsPath;
 				openFolderWith(path, (path: string) => `subl "${path}"`);
+			}
+		),
+		vsc.commands.registerCommand(
+			"adapt.openProjectInSublimeText",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const 
+					wsfs = vsc.workspace.workspaceFolders,
+					pathes = wsfs?.map((v) => v.uri.fsPath) || null;
+				openFolderWith(pathes, (path: string) => `subl "${path}"`);
 			}
 		),
 		vsc.commands.registerCommand(
@@ -102,11 +120,35 @@ export function activate(context: vsc.ExtensionContext) {
 			}
 		),
 		vsc.commands.registerCommand(
+			"adapt.openProjectInCMD",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const 
+					wsfs = vsc.workspace.workspaceFolders,
+					pathes = wsfs?.map((v) => v.uri.fsPath) || null;
+				openFolderWith(pathes, (path: string) => `start cmd /s /k pushd "${path}"`);
+			}
+		),
+		vsc.commands.registerCommand(
 			"adapt.openPowerShell",
 			function (arg1: {fsPath: string}, arg2: any) {
 				const path = arg1.fsPath;
 				openFolderWith(
 					path,
+					(path: string) => {
+						return `start powershell.exe -noexit ` + 
+							`-command Set-Location -literalPath "${path}"`;
+					}, 
+				);
+			}
+		),
+		vsc.commands.registerCommand(
+			"adapt.openProjectInPowerShell",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const 
+					wsfs = vsc.workspace.workspaceFolders,
+					pathes = wsfs?.map((v) => v.uri.fsPath) || null;
+				openFolderWith(
+					pathes,
 					(path: string) => {
 						return `start powershell.exe -noexit ` + 
 							`-command Set-Location -literalPath "${path}"`;

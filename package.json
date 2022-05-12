@@ -27,7 +27,11 @@
 		"onCommand:adapt.openSublimeMerge",
 		"onCommand:adapt.openSublimeText",
 		"onCommand:adapt.openCMD",
-		"onCommand:adapt.openPowerShell"
+		"onCommand:adapt.openPowerShell",
+		"onCommand:adapt.openProjectInSublimeMerge",
+		"onCommand:adapt.openProjectInSublimeText",
+		"onCommand:adapt.openProjectInCMD",
+		"onCommand:adapt.openProjectInPowerShell"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -131,6 +135,24 @@
 			{
 				"command": "adapt.openPowerShell",
 				"title": "Adapt: Open PowerShell"
+			},
+
+
+			{
+				"command": "adapt.openProjectInSublimeMerge",
+				"title": "Adapt: Open Project With Sublime Merge"
+			},
+			{
+				"command": "adapt.openProjectInSublimeText",
+				"title": "Adapt: Open Project With Sublime Text"
+			},
+			{
+				"command": "adapt.openProjectInCMD",
+				"title": "Adapt: Open Project With CMD"
+			},
+			{
+				"command": "adapt.openProjectInPowerShell",
+				"title": "Adapt: Open Project With PowerShell"
 			}
 		],
 		"menus": {
@@ -176,6 +198,10 @@
 				{
 					"command": "adapt.openPowerShell",
 					"group": "1"
+				},
+				{
+					"submenu": "openProjectWith",
+					"group": "1"
 				}
 			],
 			"explorer/context": [
@@ -211,12 +237,30 @@
 				{
 					"command": "adapt.pasteCursorNums-xxxxx"
 				}
+			],
+			"openProjectWith": [
+				{
+					"command": "adapt.openProjectInSublimeMerge"
+				},
+				{
+					"command": "adapt.openProjectInSublimeText"
+				},
+				{
+					"command": "adapt.openProjectInCMD"
+				},
+				{
+					"command": "adapt.openProjectInPowerShell"
+				}
 			]
 		},
 		"submenus": [
 			{
 				"id": "pasteCursorNumbers",
 				"label": "Paste Cursor Numbers"
+			},
+			{
+				"id": "openProjectWith",
+				"label": "Adapt: Open Project Folder With ..."
 			}
 		]
 	},
