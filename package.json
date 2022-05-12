@@ -256,7 +256,7 @@
 		"submenus": [
 			{
 				"id": "pasteCursorNumbers",
-				"label": "Paste Cursor Numbers"
+				"label": "Adapt: Paste Cursor Numbers ..."
 			},
 			{
 				"id": "openProjectWith",
