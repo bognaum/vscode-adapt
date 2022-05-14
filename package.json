@@ -260,6 +260,9 @@
 				},
 				{
 					"command": "adapt.openPowerShell"
+				},
+				{
+					"submenu": "path-name-to-explorer"
 				}
 			],
 			"pasteCursorNumbers": [
@@ -308,6 +311,12 @@
 				{"command": "adapt.copyPath"},
 				{"command": "adapt.copyFileName"},
 				{"command": "adapt.copyProjectPath"}
+			],
+			"path-name-to-explorer": [
+				{"command": "adapt.copyPathName"},
+				{"command": "adapt.copyPath"},
+				{"command": "adapt.copyFileName"},
+				{"command": "adapt.copyProjectPath"}
 			]
 		},
 		"submenus": [
@@ -321,6 +330,10 @@
 			},
 			{
 				"id": "path-name",
+				"label": "Adapt: Path / Name: ..."
+			},
+			{
+				"id": "path-name-to-explorer",
 				"label": "Adapt: Path / Name: ..."
 			}
 		]
