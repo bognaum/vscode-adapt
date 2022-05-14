@@ -31,7 +31,19 @@
 		"onCommand:adapt.openProjectInSublimeMerge",
 		"onCommand:adapt.openProjectInSublimeText",
 		"onCommand:adapt.openProjectInCMD",
-		"onCommand:adapt.openProjectInPowerShell"
+		"onCommand:adapt.openProjectInPowerShell",
+
+		"onCommand:adapt.replaceSlashes.backToFortvard",
+		"onCommand:adapt.replaceSlashes.doubleBackToFortvard",
+		"onCommand:adapt.replaceSlashes.forvardToBack",
+		"onCommand:adapt.replaceSlashes.forvardToDoubleBack",
+		"onCommand:adapt.replaceSlashes.backToDoubleBack",
+		"onCommand:adapt.replaceSlashes.doubleBackToBack",
+
+		"onCommand:adapt.copyPathName",
+		"onCommand:adapt.copyPath",
+		"onCommand:adapt.copyFileName",
+		"onCommand:adapt.copyProjectPath"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -153,6 +165,49 @@
 			{
 				"command": "adapt.openProjectInPowerShell",
 				"title": "Adapt: Open Project With PowerShell"
+			},
+
+
+
+			{
+				"command": "adapt.replaceSlashes.backToFortvard",
+				"title": "\\ >>> /"
+			},
+			{
+				"command": "adapt.replaceSlashes.doubleBackToFortvard",
+				"title": "\\\\ >>> /"
+			},
+			{
+				"command": "adapt.replaceSlashes.forvardToBack",
+				"title": "/ >>> \\"
+			},
+			{
+				"command": "adapt.replaceSlashes.forvardToDoubleBack",
+				"title": "/ >>> \\\\"
+			},
+			{
+				"command": "adapt.replaceSlashes.backToDoubleBack",
+				"title": "\\ >>> \\\\"
+			},
+			{
+				"command": "adapt.replaceSlashes.doubleBackToBack",
+				"title": "\\\\ >>> \\"
+			},
+			{
+				"command": "adapt.copyPathName",
+				"title": "Adapt: Copy Path / Name"
+			},
+			{
+				"command": "adapt.copyPath",
+				"title": "Adapt: Copy Path"
+			},
+			{
+				"command": "adapt.copyFileName",
+				"title": "Adapt: Copy Name"
+			},
+			{
+				"command": "adapt.copyProjectPath",
+				"title": "Adapt: Copy Project Path"
 			}
 		],
 		"menus": {
@@ -188,6 +243,9 @@
 				{
 					"submenu": "openProjectWith",
 					"group": "1"
+				},
+				{
+					"submenu": "path-name"
 				}
 			],
 			"explorer/context": [
@@ -237,6 +295,19 @@
 				{
 					"command": "adapt.openProjectInPowerShell"
 				}
+			],
+			"path-name": [
+				{"command": "adapt.replaceSlashes.backToFortvard"},
+				{"command": "adapt.replaceSlashes.doubleBackToFortvard"},
+				{"command": "adapt.replaceSlashes.forvardToBack"},
+				{"command": "adapt.replaceSlashes.forvardToDoubleBack"},
+				{"command": "adapt.replaceSlashes.backToDoubleBack"},
+				{"command": "adapt.replaceSlashes.doubleBackToBack"},
+
+				{"command": "adapt.copyPathName"},
+				{"command": "adapt.copyPath"},
+				{"command": "adapt.copyFileName"},
+				{"command": "adapt.copyProjectPath"}
 			]
 		},
 		"submenus": [
@@ -247,6 +318,10 @@
 			{
 				"id": "openProjectWith",
 				"label": "Adapt: Open Project Folder With ..."
+			},
+			{
+				"id": "path-name",
+				"label": "Adapt: Path / Name: ..."
 			}
 		]
 	},

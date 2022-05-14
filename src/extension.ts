@@ -12,6 +12,8 @@ import pasteLineNumber  from "./commands/pasteLineNumber";
 import pasteCursorNums from "./functions/pasteCursorNums";
 import openFolderWith  from "./functions/openFolderWith";
 
+import replaceSelection from './functions/replaceSelection';
+
 export function activate(context: vsc.ExtensionContext) {
 	const commands = [
 		vsc.commands.registerTextEditorCommand(
@@ -154,6 +156,68 @@ export function activate(context: vsc.ExtensionContext) {
 							`-command Set-Location -literalPath "${path}"`;
 					}, 
 				);
+			}
+		),
+
+
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.backToFortvard", 
+			replaceSelection(/\\/g  , "/"   ),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.doubleBackToFortvard", 
+			replaceSelection(/\\\\/g, "/"   ),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.forvardToBack", 
+			replaceSelection(/\//g  , "\\"  ),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.forvardToDoubleBack", 
+			replaceSelection(/\//g  , "\\\\"),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.backToDoubleBack", 
+			replaceSelection(/\\/g  , "\\\\"),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.replaceSlashes.doubleBackToBack", 
+			replaceSelection(/\\\\/g, "\\"  ),
+		),
+		vsc.commands.registerCommand(
+			"adapt.copyPathName",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const pathname = arg1.fsPath;
+				vsc.env.clipboard.writeText(pathname);
+			}
+		),
+		vsc.commands.registerCommand(
+			"adapt.copyPath",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const PATH = require("path");
+				const 
+					pathname = arg1.fsPath,
+					path = PATH.dirname(pathname);
+				vsc.env.clipboard.writeText(path);
+			}
+		),
+		vsc.commands.registerCommand(
+			"adapt.copyFileName",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const PATH = require("path");
+				const 
+					pathname = arg1.fsPath,
+					name = PATH.basename(pathname);
+				vsc.env.clipboard.writeText(name);
+			}
+		),
+		vsc.commands.registerCommand(
+			"adapt.copyProjectPath",
+			function (arg1: {fsPath: string}, arg2: any) {
+				const 
+					wsfs = vsc.workspace.workspaceFolders,
+					pathes = wsfs?.map((v) => v.uri.fsPath) || [];
+				vsc.env.clipboard.writeText(pathes.join("\n"));
 			}
 		),
 	];
