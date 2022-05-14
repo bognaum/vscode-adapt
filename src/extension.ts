@@ -220,6 +220,32 @@ export function activate(context: vsc.ExtensionContext) {
 				vsc.env.clipboard.writeText(pathes.join("\n"));
 			}
 		),
+
+
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.dashToSnail", 
+			replaceSelection(/-/g, "_"  ),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.snailToDash", 
+			replaceSelection(/_/g, "-"  ),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.dashToCamel", 
+			replaceSelection(/-(\w)/g, (ss: string, p1: string) => p1.toUpperCase()),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.snailToCamel", 
+			replaceSelection(/_(\w)/g, (ss: string, p1: string) => p1.toUpperCase()),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.camelToDash", 
+			replaceSelection(/[A-Z]/g, (ss: string) => "-"+ss.toLowerCase()),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.notation.camelToSnail", 
+			replaceSelection(/[A-Z]/g, (ss: string) => "_"+ss.toLowerCase()),
+		),
 	];
 
 	context.subscriptions.push(...commands);

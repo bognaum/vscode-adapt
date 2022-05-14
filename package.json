@@ -43,7 +43,14 @@
 		"onCommand:adapt.copyPathName",
 		"onCommand:adapt.copyPath",
 		"onCommand:adapt.copyFileName",
-		"onCommand:adapt.copyProjectPath"
+		"onCommand:adapt.copyProjectPath",
+
+		"onCommand:adapt.notation.dashToSnail",
+		"onCommand:adapt.notation.snailToDash",
+		"onCommand:adapt.notation.dashToCamel",
+		"onCommand:adapt.notation.snailToCamel",
+		"onCommand:adapt.notation.camelToDash",
+		"onCommand:adapt.notation.camelToSnail"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -208,6 +215,31 @@
 			{
 				"command": "adapt.copyProjectPath",
 				"title": "Adapt: Copy Project Path"
+			},
+
+			{
+				"command": "adapt.notation.dashToSnail",
+				"title": "a-b >>> a_b"
+			},
+			{
+				"command": "adapt.notation.snailToDash",
+				"title": "a_b >>> a-b"
+			},
+			{
+				"command": "adapt.notation.dashToCamel",
+				"title": "a-b >>> aB"
+			},
+			{
+				"command": "adapt.notation.snailToCamel",
+				"title": "a_b >>> aB"
+			},
+			{
+				"command": "adapt.notation.camelToDash",
+				"title": "aB >>> a-b"
+			},
+			{
+				"command": "adapt.notation.camelToSnail",
+				"title": "aB >>> a_b"
 			}
 		],
 		"menus": {
@@ -246,6 +278,9 @@
 				},
 				{
 					"submenu": "path-name"
+				},
+				{
+					"submenu": "notations"
 				}
 			],
 			"explorer/context": [
@@ -317,6 +352,14 @@
 				{"command": "adapt.copyPath"},
 				{"command": "adapt.copyFileName"},
 				{"command": "adapt.copyProjectPath"}
+			],
+			"notations": [
+				{"command": "adapt.notation.dashToSnail"},
+				{"command": "adapt.notation.snailToDash"},
+				{"command": "adapt.notation.dashToCamel"},
+				{"command": "adapt.notation.snailToCamel"},
+				{"command": "adapt.notation.camelToDash"},
+				{"command": "adapt.notation.camelToSnail"}
 			]
 		},
 		"submenus": [
@@ -335,6 +378,10 @@
 			{
 				"id": "path-name-to-explorer",
 				"label": "Adapt: Path / Name: ..."
+			},
+			{
+				"id": "notations",
+				"label": "Adapt: aB a-b a_b ..."
 			}
 		]
 	},
