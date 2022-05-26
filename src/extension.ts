@@ -14,7 +14,10 @@ import openFolderWith  from "./functions/openFolderWith";
 
 import replaceSelection from './functions/replaceSelection';
 
-export function activate(context: vsc.ExtensionContext) {
+import changeSelectedText from "./functions/changeSelectedText";
+
+
+export function activate(context: vsc.ExtensionContext): void {
 	const commands = [
 		vsc.commands.registerTextEditorCommand(
 			"adapt.selectPathSegment", 
@@ -245,6 +248,24 @@ export function activate(context: vsc.ExtensionContext) {
 		vsc.commands.registerTextEditorCommand(
 			"adapt.notation.camelToSnail", 
 			replaceSelection(/[A-Z]/g, (ss: string) => "_"+ss.toLowerCase()),
+		),
+
+
+		vsc.commands.registerTextEditorCommand(
+			"adapt.uriCoding.decodeURI", 
+			changeSelectedText(decodeURI),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.uriCoding.decodeURIComponent", 
+			changeSelectedText(decodeURIComponent),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.uriCoding.encodeURI", 
+			changeSelectedText(encodeURI),
+		),
+		vsc.commands.registerTextEditorCommand(
+			"adapt.uriCoding.encodeURIComponent", 
+			changeSelectedText(encodeURIComponent),
 		),
 	];
 

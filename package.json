@@ -50,7 +50,12 @@
 		"onCommand:adapt.notation.dashToCamel",
 		"onCommand:adapt.notation.snailToCamel",
 		"onCommand:adapt.notation.camelToDash",
-		"onCommand:adapt.notation.camelToSnail"
+		"onCommand:adapt.notation.camelToSnail",
+
+		"onCommand:adapt.uriCoding.decodeURI",
+		"onCommand:adapt.uriCoding.decodeURIComponent",
+		"onCommand:adapt.uriCoding.encodeURI",
+		"onCommand:adapt.uriCoding.encodeURIComponent"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -240,6 +245,24 @@
 			{
 				"command": "adapt.notation.camelToSnail",
 				"title": "aB >>> a_b"
+			},
+
+
+			{
+				"command": "adapt.uriCoding.decodeURI",
+				"title": "decodeURI( sel )"
+			},
+			{
+				"command": "adapt.uriCoding.decodeURIComponent",
+				"title": "decodeURIComponent( sel )"
+			},
+			{
+				"command": "adapt.uriCoding.encodeURI",
+				"title": "encodeURI( sel )"
+			},
+			{
+				"command": "adapt.uriCoding.encodeURIComponent",
+				"title": "encodeURIComponent( sel )"
 			}
 		],
 		"menus": {
@@ -281,6 +304,9 @@
 				},
 				{
 					"submenu": "notations"
+				},
+				{
+					"submenu": "uri-coding"
 				}
 			],
 			"explorer/context": [
@@ -360,6 +386,12 @@
 				{"command": "adapt.notation.snailToCamel"},
 				{"command": "adapt.notation.camelToDash"},
 				{"command": "adapt.notation.camelToSnail"}
+			],
+			"uri-coding": [
+				{"command": "adapt.uriCoding.decodeURI"},
+				{"command": "adapt.uriCoding.decodeURIComponent"},
+				{"command": "adapt.uriCoding.encodeURI"},
+				{"command": "adapt.uriCoding.encodeURIComponent"}
 			]
 		},
 		"submenus": [
@@ -382,6 +414,10 @@
 			{
 				"id": "notations",
 				"label": "Adapt: aB a-b a_b ..."
+			},
+			{
+				"id": "uri-coding",
+				"label": "Adapt: URI Coding ..."
 			}
 		]
 	},
