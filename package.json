@@ -104,7 +104,7 @@
 			},
 			{
 				"command": "adapt.delToLineBegin",
-				"title": "Adapt: Delite to line begin"
+				"title": "Adapt: Delete to line begin"
 			},
 
 
@@ -114,27 +114,27 @@
 			},
 			{
 				"command": "adapt.pasteCursorNums",
-				"title": "Adapt: Paset Numbers of Cursors"
+				"title": "Adapt: Paste Numbers of Cursors"
 			},
 			{
 				"command": "adapt.pasteCursorNums-x",
-				"title": "Adapt: Paset Numbers of Cursors X"
+				"title": "Adapt: Paste Numbers of Cursors X"
 			},
 			{
 				"command": "adapt.pasteCursorNums-xx",
-				"title": "Adapt: Paset Numbers of Cursors XX"
+				"title": "Adapt: Paste Numbers of Cursors XX"
 			},
 			{
 				"command": "adapt.pasteCursorNums-xxx",
-				"title": "Adapt: Paset Numbers of Cursors XXX"
+				"title": "Adapt: Paste Numbers of Cursors XXX"
 			},
 			{
 				"command": "adapt.pasteCursorNums-xxxx",
-				"title": "Adapt: Paset Numbers of Cursors XXXX"
+				"title": "Adapt: Paste Numbers of Cursors XXXX"
 			},
 			{
 				"command": "adapt.pasteCursorNums-xxxxx",
-				"title": "Adapt: Paset Numbers of Cursors XXXXX"
+				"title": "Adapt: Paste Numbers of Cursors XXXXX"
 			},
 			{
 				"command": "adapt.changeToEntities",
