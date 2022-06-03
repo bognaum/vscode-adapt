@@ -12,6 +12,6 @@ export default function pasteCursorNums(tEditor: vsc.TextEditor, edit: vsc.TextE
 			return a.active.line - b.active.line;
 	});
 	for (let i = 0; i < selsLen; i ++) {
-		edit.replace(sels[i], (i + 1).toString().padStart(len, " "));
+		edit.replace(sels[i], (i + 1).toString().padStart(len, "0"));
 	}
 }
