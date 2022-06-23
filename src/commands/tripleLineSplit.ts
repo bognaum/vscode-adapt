@@ -4,31 +4,30 @@ export default function (tEditor: vsc.TextEditor, edit: vsc.TextEditorEdit, args
 	const 
 		doc  = tEditor.document,
 		opts = tEditor.options,
-		EOL  = [0, "\n", "\r\n"][doc.eol],
+		EOL  = ["", "\n", "\r\n"][doc.eol],
 		selects: vsc.Selection[]    = [],
 		offsets: [number, number][] = [];
-	const oneTab  = opts.insertSpaces && typeof opts.tabSize === "number" ? 
+	const TAB  = opts.insertSpaces && typeof opts.tabSize === "number" ? 
 		" ".repeat(opts.tabSize) : "\t";
 
 	tEditor.edit((edit) => {
 		for (let sel of tEditor.selections) {
 			const 
-				line      = doc.lineAt(sel.active),
-				lRange    = line.range,
-				text      = line.text,
-				indentM   = text.match(/^\s*/),
-				indent    = indentM ? indentM[0] : "",
-				indLen    = indent.length,
-				beforeSel = EOL+indent + oneTab,
-				selected  = doc.getText(sel),
-				afterSel  = EOL+indent;
+				startLine    = doc.lineAt(sel.start),
+				indent       = (startLine.text.match(/^\s*/) || [""])[0],
+				beforeSel    = EOL + indent + TAB,
+				selectedText = doc.getText(sel),
+				selTextAsLines = selectedText.split(EOL),
+				afterSel     = EOL+indent;
 
-			// edit.insert(sel.start, beforeSel);
-			// edit.insert(sel.end,   afterSel);
+			const resultText = EOL + indent + TAB +
+				selTextAsLines.join(EOL + TAB) + EOL + indent;
 
-			edit.replace(sel, beforeSel + selected + afterSel);
-
-			offsets.push([beforeSel.length, -afterSel.length]);
+			/* const resultText = 
+				selTextAsLines.map(v => EOL + indent + TAB + v.trimStart()).join() 
+					+ EOL + indent; */
+			edit.replace(sel, resultText);
+			offsets.push([(EOL + indent + TAB).length, -(EOL + indent).length]);
 		}
 	})
 	.then((ok) => {
