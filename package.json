@@ -76,13 +76,6 @@
 				"when": "editorTextFocus"
 			},
 			{
-				"mac": "shift+enter",
-				"win": "shift+enter",
-				"key": "shift+enter",
-				"command": "adapt.tripleLineSplit",
-				"when": "editorTextFocus"
-			},
-			{
 				"mac": "cmd+shift+backspace",
 				"win": "ctrl+shift+backspace",
 				"key": "ctrl+shift+backspace",
