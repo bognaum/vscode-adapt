@@ -14,7 +14,6 @@
         "onCommand:adapt.selectPathSegment",
         "onCommand:adapt.selectBetweenQuotes",
         "onCommand:adapt.tripleLineSplit",
-        "onCommand:adapt.delToLineBegin",
 
 		"onCommand:adapt.alignCursors",
 		"onCommand:adapt.pasteCursorNums",
@@ -74,13 +73,6 @@
 				"key": "alt+shift+m",
 				"command": "adapt.selectBetweenQuotes",
 				"when": "editorTextFocus"
-			},
-			{
-				"mac": "cmd+shift+backspace",
-				"win": "ctrl+shift+backspace",
-				"key": "ctrl+shift+backspace",
-				"command": "adapt.delToLineBegin",
-				"when": "editorTextFocus"
 			}
 		],
 		"commands": [
@@ -95,10 +87,6 @@
 			{
 				"command": "adapt.tripleLineSplit",
 				"title": "Adapt: Triple line split"
-			},
-			{
-				"command": "adapt.delToLineBegin",
-				"title": "Adapt: Delete to line begin"
 			},
 
 
