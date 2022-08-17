@@ -3,7 +3,6 @@ import * as vsc from 'vscode';
 import tripleLineSplit     from "./commands/tripleLineSplit";
 import selectPathSegment   from "./commands/selectPathSegment";
 import selectBetweenQuotes from "./commands/selectBetweenQuotes";
-import delToLineBegin      from "./commands/delToLineBegin";
 
 import alignCursors     from "./commands/alignCursors";
 import changeToEntities from "./commands/changeToEntities";
@@ -30,10 +29,6 @@ export function activate(context: vsc.ExtensionContext): void {
 		vsc.commands.registerTextEditorCommand(
 			"adapt.tripleLineSplit", 
 			tripleLineSplit
-		),
-		vsc.commands.registerTextEditorCommand(
-			"adapt.delToLineBegin", 
-			delToLineBegin
 		), 
 
 
